@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://bmuws.li00000.xyz/" />
+<meta name="keywords" content="烘焙食谱计算器,烘焙配方比例,烘焙换算器,份数缩放,食材用量计算器,曲奇配方,司康配方,香蕉面包配方,可颂配方,芝士蛋糕配方,抹茶曲奇,奶茶配方,烘焙比例公式,克杯量勺换算,烘焙新手配方" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="烘焙食谱计算器 · 精准配比 & 份数缩放" />
+<meta property="og:description" content="8 道预置烘焙食谱：巧克力曲奇 / 黄油司康 / 香蕉面包 / 松饼 / 纽约芝士蛋糕 / 可颂 / 港式奶茶 / 抹茶曲奇。份数任意缩放，克·杯·厨房量具三档单位换算，一键复制用料清单。" />
+<meta property="og:url" content="https://bmuws.li00000.xyz/" />
+<meta property="og:site_name" content="烘焙食谱计算器" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"烘焙食谱计算器","alternateName":["烘焙配方计算器","食材用量换算器","烘焙份数缩放工具"],"url":"https://bmuws.li00000.xyz/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":["zh-CN","zh-TW","en"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"li00000 在线工具集","url":"https://li00000.xyz/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"烘焙配方怎么按比例放大缩小？","acceptedAnswer":{"@type":"Answer","text":"用目标份数除以原始份数得到缩放系数，所有食材用量乘以该系数即可。例如 4 人份放大到 12 人份，系数为 3，每种食材乘以 3。"}},{"@type":"Question","name":"1 杯面粉等于多少克？","acceptedAnswer":{"@type":"Answer","text":"美式量杯 1 杯（240ml 体积）低筋面粉约 120 克、中筋面粉约 125 克、高筋面粉约 127 克；1 汤匙面粉约 10 克、1 茶匙约 4 克。体积计量误差大，精准烘焙建议以克数为准。"}},{"@type":"Question","name":"低筋面粉、中筋面粉、高筋面粉怎么区分？","acceptedAnswer":{"@type":"Answer","text":"按蛋白质含量：低筋 7–9%（饼干、蛋糕），中筋 9–11%（普通面点、饺子皮），高筋 12–14%（面包、可颂）。没有低筋粉时，可用 80% 中筋粉加 20% 糖粉（或玉米淀粉）代替。"}},{"@type":"Question","name":"芝士蛋糕水浴烤是什么意思？为什么要水浴？","acceptedAnswer":{"@type":"Answer","text":"水浴（水浴烤 / 隔水烤）是把蛋糕模放进更大的烤盘，注入约 2–3cm 热水后一起烘烤。水浴受热更均匀、防止开裂，出炉后焖 15 分钟再取出，冷藏过夜更好切。"}}]}
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>烘焙食谱计算器 · 精准配比 & 份数缩放</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23d97b2f'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='%23fff'%3E%E2%9A%99%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f7f3ec; --card:#ffffff; --card-2:#fbf7f0;
+    --ink:#2a1d10; --ink-2:#5a4a38; --ink-3:#8a7a68;
+    --accent:#d97b2f; --accent-2:#b85c1c;
+    --line:#e8ddc9; --line-2:#f0e8d8;
+    --ok:#2f7a4d; --warn:#c9662a;
+    --shadow:0 12px 32px -12px rgba(90,55,20,.18), 0 2px 8px -2px rgba(90,55,20,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{padding:0}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+
+  /* Header */
+  header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0}
+  .brand-mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#f7d9a8,#d97b2f);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 6px 16px -4px rgba(217,123,47,.5);flex-shrink:0}
+  .brand-text{min-width:0}
+  .brand-text h1{font-size:18px;font-weight:600;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand-text p{font-size:12px;color:var(--ink-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:0;flex:1}
+  .header-meta{font-size:12px;color:var(--ink-3);text-align:right;line-height:1.7}
+  /* 英文长文案：副标题/标题允许完整显示但收紧间距 */
+  [lang="en"] .brand-text h1{font-size:16px}
+  [lang="en"] .brand-text p{font-size:11px}
+  [lang="en"] .header-meta{font-size:11px}
+
+  /* 语言条（嵌入 header-right） */
+  #langBar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+
+  /* Recipe grid */
+  .recipes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:24px}
+  .recipe-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;display:flex;flex-direction:column;height:240px}
+  .recipe-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent)}
+  .recipe-card.active{border-color:var(--accent);box-shadow:0 0 0 2px rgba(217,123,47,.15),var(--shadow)}
+  .recipe-card img{width:100%;height:150px;object-fit:cover;background:#eee}
+  .rc-body{padding:12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .rc-name{font-size:15px;font-weight:600;line-height:1.3}
+  .rc-meta{font-size:12px;color:var(--ink-3)}
+  .rc-fav{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border:1px solid var(--line);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:15px;cursor:pointer;user-select:none;transition:transform .15s}
+  .rc-fav:hover{transform:scale(1.1)}
+  .rc-fav.on{color:var(--accent)}
+  .rc-fav:not(.on){color:#bbb}
+
+  /* Control bar */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .panel-title{font-size:13px;color:var(--ink-3);font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .panel-title .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  .servings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+  .servings>div{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .servings label{font-size:12px;color:var(--ink-3);font-weight:500}
+  .servings .row{display:flex;gap:8px;align-items:center;margin-top:8px}
+  .servings input[type=number]{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;background:#fff;color:var(--ink);outline:none;font-weight:600}
+  .servings input[type=number]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,123,47,.12)}
+  .servings .btn{width:36px;height:36px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:18px;cursor:pointer;color:var(--ink-2);display:grid;place-items:center;flex-shrink:0}
+  .servings .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .scale-readout{margin-top:10px;font-size:12px;color:var(--ink-2);display:flex;gap:14px;flex-wrap:wrap}
+  .scale-readout strong{color:var(--accent);font-weight:700}
+
+  /* Preset chips */
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chip{border:1px solid var(--line);background:var(--card-2);border-radius:999px;padding:5px 14px;font-size:12px;cursor:pointer;color:var(--ink-2);transition:all .15s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+  /* Units */
+  .units-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .units-row .lbl{font-size:12px;color:var(--ink-3);margin-right:6px}
+  .unit-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;color:var(--ink-2)}
+  .unit-btn.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+
+  /* Ingredients table */
+  .ing-table{width:100%;border-collapse:collapse}
+  .ing-table thead th{text-align:left;font-size:11px;color:var(--ink-3);font-weight:500;padding:6px 8px;border-bottom:1px solid var(--line);letter-spacing:.5px}
+  .ing-table tbody tr{border-bottom:1px solid var(--line-2);transition:background .15s}
+  .ing-table tbody tr:hover{background:var(--card-2)}
+  .ing-table tbody td{padding:10px 8px;font-size:14px;vertical-align:middle}
+  .ing-name{font-weight:600}
+  .ing-sub{font-size:11px;color:var(--ink-3);margin-top:2px;font-weight:400}
+  .ing-amount{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;font-size:15px;white-space:nowrap}
+  .ing-amount .unit{font-size:11px;color:var(--ink-3);font-weight:500;margin-left:3px}
+  .ing-orig{font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .ing-bar{height:8px;background:var(--line-2);border-radius:999px;overflow:hidden;min-width:80px}
+  .ing-bar>div{height:100%;background:linear-gradient(90deg,#f0b070,#d97b2f);border-radius:999px;transition:width .3s}
+  .ing-pct{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .ing-check{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+  .stat{background:var(--card-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .stat .k{font-size:11px;color:var(--ink-3)}
+  .stat .v{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+  .stat .v .u{font-size:11px;color:var(--ink-3);font-weight:500;margin-left:2px}
+
+  /* Notes */
+  .notes{background:#fff8e6;border:1px solid #f0dfae;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px;color:#7a5c1f;line-height:1.8}
+  .notes strong{color:#a87a1f;font-weight:600}
+
+  /* Footer actions */
+  .actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .actions .btn{padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);transition:all .15s}
+  .actions .btn:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .actions .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .actions .btn.primary:hover{background:var(--accent-2)}
+
+  /* Toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 20px;border-radius:999px;font-size:13px;opacity:0;transition:all .3s;z-index:99;pointer-events:none;box-shadow:0 8px 24px -8px rgba(0,0,0,.4)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* Responsive */
+  @media (max-width:600px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .servings{grid-template-columns:1fr}
+    .ing-table th:nth-child(4),.ing-table td:nth-child(4){display:none}
+  }
+
+/* SEO section styles */
+.seo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin:26px 0;box-shadow:var(--shadow)}
+.seo h2{font-size:17px;font-weight:600;margin-bottom:14px;color:var(--ink)}
+.seo h3{font-size:14px;font-weight:600;margin:16px 0 6px;color:var(--ink-2)}
+.seo p{font-size:13px;color:var(--ink-2);line-height:1.9;margin-bottom:4px}
+.seo-links{list-style:none;padding:0;margin:6px 0 14px}
+.seo-links li{font-size:13px;margin:6px 0;color:var(--ink-2)}
+.seo-links a{color:var(--accent-2);font-weight:500}
+.seo-friend{font-size:12px;color:var(--ink-3);margin-top:10px}
+.seo-friend a{color:var(--accent-2);font-weight:500}
+.seo-fine{font-size:12px;color:var(--ink-3);font-style:italic;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+@media(max-width:600px){.seo{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">⚙</div>
+      <div class="brand-text">
+        <h1 data-i18n="title">烘焙食谱计算器</h1>
+        <p data-i18n="subtitle">食材克数换算 · 份数缩放 · 精准配比</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-meta" data-i18n-html="metaRecipes|metaUnits"></div>
+    </div>
+  </header>
+
+  <!-- 食谱选择 -->
+  <section class="recipes" id="recipeGrid"></section>
+
+<section class="seo">
+  <h2 data-i18n="seo.h1">烘焙配方比例与常见问题</h2>
+  <h3 data-i18n="seo.q1">烘焙配方怎么按比例放大缩小（份数缩放公式）</h3>
+  <p data-i18n="seo.q1p">烘焙放大的唯一公式：缩放系数 = 目标份数 ÷ 原始份数，所有食材用量乘以系数。例如经典巧克力曲奇原始 4 人份（24 块）放大到 12 人份，系数 3.00，低筋面粉 200g 变 600g、黄油 115g 变 345g。注意：烤箱温度与时间不随份数放大——烤盘铺满时中心温度反而略低，可把时间延长 20–30%，温度保持不变。</p>
+  <h3 data-i18n="seo.q2">1 杯面粉等于多少克（杯 / 量勺 / 厨房量具换算表）</h3>
+  <p data-i18n="seo.q2p">按美式量杯（1 cup = 240ml）：1 杯低筋面粉约 120g、中筋约 125g、高筋约 127g；1 汤匙（tbsp）面粉约 10g，1 茶匙（tsp）约 4g。液体（牛奶、水、淡奶）1 杯约 240ml/240g。体积计量受装填松紧影响可达 ±10%，商用或精准配方请以克数为准；没有秤时至少用勺刮平再计量。</p>
+  <h3 data-i18n="seo.q3">低筋面粉、中筋面粉、高筋面粉怎么区分？</h3>
+  <p data-i18n="seo.q3p">按蛋白质（面筋）含量区分：低筋 7–9%（饼干、蛋糕、司康，口感酥松）、中筋 9–11%（饺子皮、馒头、松饼面糊）、高筋 12–14%（面包、可颂，要出筋和嚼劲）。没有低筋粉的替代法：每 100g 用 80g 中筋粉 + 20g 糖粉或玉米淀粉，搅拌过筛即可；没有高筋粉则用中筋粉加 1 茶匙面包改良剂或延长揉面时间。</p>
+  <h3 data-i18n="seo.q4">芝士蛋糕为什么要水浴烤？</h3>
+  <p data-i18n="seo.q4p">水浴（隔水烤）：蛋糕模放进大烤盘，注入 2–3cm 热水同烤。水温把炉内局部温度钳制在 100°C 左右，让奶酪层受热均匀、防止表面过烤开裂。出炉先焖 15 分钟再开门，避免温差塌腰；冷藏过夜后组织结构更紧实，切面才干净。</p>
+  <h3 data-i18n="seo.q5">可颂为什么难做？关键失败点在哪？</h3>
+  <p data-i18n="seo.q5p">可颂的灵魂是黄油折叠层（开酥面团 / laminated dough）：黄油冷藏成 1cm 方片包进面团，经 3 次折叠形成上千层酥皮。失败点集中在：黄油温度——超过 20°C 就破酥、低于 10°C 就裂开，理想 12–16°C；每折一次冷藏 30 分钟；卷到 20cm 再切、尖端朝外弯；发酵过度会把酥层压死。家庭烤箱 200°C、烤 20 分钟。</p>
+  <h2 data-i18n="seo.h2ref">烘焙参考与延伸阅读</h2>
+  <ul class="seo-links">
+    <li data-i18n-html="seo.li1">King Arthur Baking · 烘焙学习中心（面粉克重与配比）：<a href="https://kingarthurbaking.com/learn" target="_blank" rel="noopener">flour weights & ratios</a></li>
+    <li data-i18n-html="seo.li2">Serious Eats · 水浴烤芝士蛋糕防开裂指南：<a href="https://www.seriouseats.com/how-to-make-the-best-cheesecake" target="_blank" rel="noopener">how to make the best cheesecake</a></li>
+    <li data-i18n-html="seo.li3">Tartine · 可颂折叠原理与失败排查：<a href="https://www.tartine.com/blogs/news/how-to-make-croissants" target="_blank" rel="noopener">how to make croissants</a></li>
+    <li data-i18n-html="seo.li4">USDA · 食品安全与食物储存参考：<a href="https://www.usda.gov/food-safety" target="_blank" rel="noopener">food safety</a></li>
+  </ul>
+  <p data-i18n-html="seo.friend" class="seo-friend">更多在线工具：<a href="https://li00000.xyz/" target="_blank" rel="noopener">在线 PS 修图</a> · <a href="https://tools.li00000.xyz/" target="_blank" rel="noopener">房贷计算器</a> · <a href="https://tjtkw.li00000.xyz/" target="_blank" rel="noopener">健身体脂计算器</a> · <a href="https://blog.li00000.xyz/" target="_blank" rel="noopener">养老生活博客</a> · <a href="https://ligcli.com/" target="_blank" rel="noopener">ligcli</a></p>
+  <p data-i18n="seo.fine" class="seo-fine">本页配方为经验值估算，不同品牌原料密度略有差异，商用请以自家秤实测为准；含蛋、奶、麸质人群请自行确认过敏原。</p>
+</section>
+
+
+  <!-- 份数控制 -->
+  <section class="panel">
+    <div class="panel-title"><span class="dot"></span><span id="scaleTitle"></span></div>
+    <div class="servings">
+      <div>
+        <label data-i18n="labelBase">原始份数（食谱基准）</label>
+        <div class="row">
+          <input type="number" id="baseInput" min="1" max="100" value="4">
+          <button class="btn" data-step="base">−</button>
+          <button class="btn" data-step="base">+</button>
+        </div>
+      </div>
+      <div>
+        <label data-i18n="labelTarget">目标份数（想烤的量）</label>
+        <div class="row">
+          <input type="number" id="targetInput" min="1" max="200" value="4">
+          <button class="btn" data-step="target">−</button>
+          <button class="btn" data-step="target">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="presets" id="targetPresets"></div>
+    <div class="scale-readout" id="scaleReadout"></div>
+  </section>
+
+  <!-- 单位切换 -->
+  <section class="panel">
+    <div class="panel-title"><span class="dot"></span><span data-i18n="panelUnit">单位模式</span></div>
+    <div class="units-row" id="unitRow">
+      <span class="lbl" data-i18n="unitLbl">显示</span>
+      <button class="unit-btn on" data-unit="g" data-i18n="unitG">克 / 毫升</button>
+      <button class="unit-btn" data-unit="cup" data-i18n="unitCup">杯 / 量勺</button>
+      <button class="unit-btn" data-unit="tool" data-i18n="unitTool">厨房量具</button>
+    </div>
+  </section>
+
+  <!-- 食材表 -->
+  <section class="panel" id="ingPanel">
+    <div class="panel-title"><span class="dot"></span><span id="ingTitle" data-i18n="ingTitle">食材清单</span></div>
+    <table class="ing-table">
+      <thead>
+        <tr>
+          <th style="width:40px"></th>
+          <th data-i18n="thIng">食材</th>
+          <th style="text-align:right" data-i18n="thCur">当前用量</th>
+          <th style="text-align:right" data-i18n="thOrig">原始用量</th>
+          <th data-i18n="thRatio">相对配比</th>
+          <th style="width:50px;text-align:right"><span style="font-size:10px" data-i18n="thPct">占主料 %</span></th>
+        </tr>
+      </thead>
+      <tbody id="ingBody"></tbody>
+    </table>
+    <div class="stats" id="statRow"></div>
+    <div class="notes" id="notesBlock"></div>
+    <div class="actions">
+      <button class="btn" id="copyBtn" data-i18n="copy">复制整张清单</button>
+      <button class="btn" id="resetBtn" data-i18n="reset">重置为原始份数</button>
+      <button class="btn primary" id="scaleToTarget" data-i18n="scaleTo">放大到目标份数</button>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   食谱数据
+   每道菜的 baseServing 是"原始份数"；所有食材 amount 都是该份数下的用量。
+   单位：克 / 毫升 / 个 / 勺 / 片
+   volumeFactor：换算"体积"时的近似系数（用于杯/量勺模式）
+   ============================================================ */
+const RECIPES = [
+  {
+    key:"chocolate-chip",
+    name:"经典巧克力曲奇",
+    cat:"饼干",
+    baseServing:4,        // 4 人份（做 24 块）
+    yieldText:"24 块",
+    prep:"准备 20 分钟",
+    cook:"烤 12 分钟",
+    notes:"面团冷藏 30 分钟更易成型；巧克力块最后加入避免融化。烤到边缘金黄、中心微软即可，出炉还会再变硬。",
+    ingredients:[
+      {name:"低筋面粉", g:200, sub:"过筛 1 次", vol:1, tool:"1¾ 杯"},
+      {name:"黄油", g:115, sub:"冷藏硬块切丁", vol:0.5, tool:"⅓ 杯"},
+      {name:"红糖", g:100, sub:"细纹，压实在量杯里", vol:0.5, tool:"½ 杯"},
+      {name:"白砂糖", g:70, sub:"细砂糖", vol:0.35, tool:"⅓ 杯"},
+      {name:"鸡蛋", g:50, sub:"1 个（约 50g，室温）", vol:0.75, tool:"1 个"},
+      {name:"香草精", g:4, sub:"¼ 茶匙", vol:0.25, tool:"¼ 茶匙"},
+      {name:"小苏打", g:2, sub:"½ 茶匙（小撮）", vol:0.5, tool:"½ 茶匙"},
+      {name:"盐", g:2, sub:"一小撮", vol:0.5, tool:"1 撮"},
+      {name:"巧克力豆", g:90, sub:"烘焙用 60% 可可", vol:0.6, tool:"⅔ 杯"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"butter",
+    name:"黄油司康",
+    cat:"英式点心",
+    baseServing:4,
+    yieldText:"12 个",
+    prep:"准备 25 分钟",
+    cook:"烤 15 分钟",
+    notes:"黄油要全程冷藏；面粉和黄油混合后用叉子压碎成粗粒，不要揉成面团。烤到表面金黄即可，出炉配奶油和果酱。",
+    ingredients:[
+      {name:"低筋面粉", g:200, sub:"过筛", vol:1, tool:"1¾ 杯"},
+      {name:"黄油", g:80, sub:"冷藏切 5mm 小丁", vol:0.4, tool:"⅓ 杯"},
+      {name:"细砂糖", g:30, sub:"或黄糖 1:1", vol:0.15, tool:"2 汤匙"},
+      {name:"泡打粉", g:6, sub:"1½ 茶匙", vol:1, tool:"1½ 茶匙"},
+      {name:"盐", g:2, sub:"一小撮", vol:0.5, tool:"1 撮"},
+      {name:"全脂牛奶", g:80, sub:"冷藏，约 ⅓ 杯", vol:1, tool:"⅓ 杯"},
+      {name:"鸡蛋", g:50, sub:"1 个，刷面用", vol:0.75, tool:"1 个"},
+      {name:"细砂糖（面）", g:10, sub:"最后撒面", vol:0.05, tool:"1 汤匙"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"banana-bread",
+    name:"香蕉面包",
+    cat:"磅蛋糕",
+    baseServing:4,
+    yieldText:"1 条（切 10 片）",
+    prep:"准备 15 分钟",
+    cook:"烤 55 分钟",
+    notes:"香蕉越熟越甜；面糊一次不要过度搅拌，避免出筋。用竹签插到中心干净即熟。烤好放凉再切片。",
+    ingredients:[
+      {name:"香蕉", g:220, sub:"2~3 根熟透的", vol:0.9, tool:"2~3 根"},
+      {name:"低筋面粉", g:180, sub:"过筛", vol:1, tool:"1⅓ 杯"},
+      {name:"泡打粉", g:6, sub:"1½ 茶匙", vol:1, tool:"1½ 茶匙"},
+      {name:"小苏打", g:4, sub:"1 茶匙", vol:1, tool:"1 茶匙"},
+      {name:"盐", g:2, sub:"½ 茶匙", vol:0.5, tool:"½ 茶匙"},
+      {name:"黄油", g:60, sub:"融化，略凉", vol:0.3, tool:"¼ 杯"},
+      {name:"细砂糖", g:70, sub:"白 50g + 黄 20g", vol:0.35, tool:"⅓ 杯"},
+      {name:"鸡蛋", g:50, sub:"1 个", vol:0.75, tool:"1 个"},
+      {name:"香草精", g:4, sub:"1 茶匙", vol:1, tool:"1 茶匙"},
+      {name:"核桃（可选）", g:40, sub:"切碎", vol:0.2, tool:"⅓ 杯"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"pancakes",
+    name:"松饼（煎饼）",
+    cat:"早餐",
+    baseServing:4,
+    yieldText:"约 8 张（厚松饼）",
+    prep:"准备 10 分钟",
+    cook:"每面 2~3 分钟",
+    notes:"面糊要浓稠能流动；不粘锅小火，看到表面出小气泡再翻。可配枫糖浆、莓果、奶油。",
+    ingredients:[
+      {name:"中筋面粉", g:150, sub:"过筛", vol:1, tool:"1 杯"},
+      {name:"泡打粉", g:8, sub:"2 茶匙", vol:1, tool:"2 茶匙"},
+      {name:"细砂糖", g:20, sub:"2 汤匙", vol:0.1, tool:"2 汤匙"},
+      {name:"盐", g:1, sub:"¼ 茶匙", vol:0.5, tool:"¼ 茶匙"},
+      {name:"牛奶", g:180, sub:"常温，¾ 杯", vol:1, tool:"¾ 杯"},
+      {name:"鸡蛋", g:50, sub:"1 个", vol:0.75, tool:"1 个"},
+      {name:"黄油（融化）", g:15, sub:"1 汤匙", vol:0.1, tool:"1 汤匙"},
+      {name:"香草精（可选）", g:2, sub:"½ 茶匙", vol:0.5, tool:"½ 茶匙"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"cheesecake",
+    name:"纽约芝士蛋糕",
+    cat:"蛋糕",
+    baseServing:4,
+    yieldText:"8~10 块",
+    prep:"准备 30 分钟",
+    cook:"水浴烤 55 分钟",
+    notes:"奶油奶酪要室温软化；水浴烤防开裂。烤完别立刻开炉门，焖 15 分钟再取出。冷藏过夜更好切。",
+    ingredients:[
+      {name:"消化饼干", g:100, sub:"压碎成粉", vol:1, tool:"200 毫升碗"},
+      {name:"黄油（融化）", g:50, sub:"3½ 汤匙", vol:0.25, tool:"3½ 汤匙"},
+      {name:"奶油奶酪", g:400, sub:"室温软化", vol:0.8, tool:"2 杯"},
+      {name:"细砂糖", g:100, sub:"½ 杯（压实）", vol:0.5, tool:"½ 杯"},
+      {name:"鸡蛋", g:150, sub:"3 个，室温", vol:2, tool:"3 个"},
+      {name:"淡奶油", g:100, sub:"¼ 杯（33%）", vol:1, tool:"¼ 杯"},
+      {name:"香草精", g:4, sub:"1 茶匙", vol:1, tool:"1 茶匙"},
+      {name:"柠檬汁", g:10, sub:"½ 茶匙（可选）", vol:1, tool:"½ 茶匙"},
+      {name:"盐", g:1, sub:"一小撮", vol:0.5, tool:"1 撮"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"croissant",
+    name:"原味可颂",
+    cat:"欧包",
+    baseServing:4,
+    yieldText:"6 个",
+    prep:"准备 90 分钟 + 冷藏 2 小时",
+    cook:"烤 20 分钟",
+    notes:"发酵面团要冷藏到黄油变硬再开始折叠；每折一次冷藏 30 分钟。卷到 20cm 再切，尖端朝外弯。",
+    ingredients:[
+      {name:"高筋面粉", g:300, sub:"面包粉", vol:1, tool:"2½ 杯"},
+      {name:"细砂糖", g:30, sub:"3 汤匙", vol:0.15, tool:"3 汤匙"},
+      {name:"干酵母", g:6, sub:"1½ 茶匙（约 1 小包）", vol:1, tool:"1½ 茶匙"},
+      {name:"盐", g:6, sub:"1 茶匙", vol:1, tool:"1 茶匙"},
+      {name:"全脂牛奶", g:80, sub:"⅓ 杯（温 38°C）", vol:1, tool:"⅓ 杯"},
+      {name:"鸡蛋", g:50, sub:"1 个（室温）", vol:0.75, tool:"1 个"},
+      {name:"无盐黄油", g:180, sub:"冷藏成 1cm 方片", vol:0.9, tool:"⅞ 杯"},
+      {name:"蛋液", g:15, sub:"1 个蛋黄 + 少许牛奶", vol:0.1, tool:"1 个蛋黄"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"milk-tea",
+    name:"港式丝袜奶茶",
+    cat:"饮品",
+    baseServing:4,
+    yieldText:"4 杯（约 240ml/杯）",
+    prep:"准备 5 分钟",
+    cook:"煮 8 分钟",
+    notes:"茶叶用锡兰红茶（Ceylon），煮到 5 分钟关火焖 3 分钟。炼乳和淡奶按 2:1 配；喜欢甜可多加 1 茶匙。",
+    ingredients:[
+      {name:"锡兰红茶", g:12, sub:"1 茶匙 × 4 杯", vol:0.5, tool:"4 茶匙"},
+      {name:"水", g:480, sub:"24 盎司（960ml 煮后约 480ml）", vol:1, tool:"4 杯"},
+      {name:"淡奶（Evaporated）", g:160, sub:"¼ 杯 × 4", vol:1, tool:"1 杯"},
+      {name:"炼乳", g:80, sub:"4 汤匙", vol:0.4, tool:"4 汤匙"},
+      {name:"细砂糖（可选）", g:20, sub:"1 汤匙", vol:0.1, tool:"1 汤匙"},
+    ],
+    ratio:{main:0}
+  },
+  {
+    key:"matcha",
+    name:"抹茶曲奇",
+    cat:"饼干",
+    baseServing:4,
+    yieldText:"30 块",
+    prep:"准备 25 分钟",
+    cook:"烤 10 分钟",
+    notes:"抹茶用烘焙级（ceremonial 级太苦）。面团冷藏 1 小时再切；挤出的花纹要尖。",
+    ingredients:[
+      {name:"低筋面粉", g:150, sub:"过筛", vol:1, tool:"1⅓ 杯"},
+      {name:"抹茶粉", g:10, sub:"烘焙级 4 茶匙", vol:0.5, tool:"4 茶匙"},
+      {name:"黄油", g:90, sub:"冷藏切丁", vol:0.45, tool:"⅓ 杯"},
+      {name:"细砂糖", g:50, sub:"⅕ 杯", vol:0.25, tool:"⅕ 杯"},
+      {name:"糖粉", g:5, sub:"过筛", vol:0.05, tool:"1 茶匙"},
+      {name:"鸡蛋", g:25, sub:"½ 个（约 25g）", vol:0.4, tool:"½ 个"},
+      {name:"盐", g:1, sub:"一小撮", vol:0.5, tool:"1 撮"},
+    ],
+    ratio:{main:0}
+  },
+];
+
+/* ============================================================
+   食材名 / 备注 / 小贴士 的三语映射
+   ING_I18N["recipeKey|食材名"][lang] = {n:name, s:sub}
+   NOTES_I18N[recipeKey][lang] = 小贴士全文
+   缺省时回落到简中原文（RECIPES 里的 name/sub/notes）
+   ============================================================ */
+const ING_I18N = {
+  /* 巧克力曲奇 */
+  "chocolate-chip|低筋面粉":{zh:{n:"低筋面粉",s:"过筛 1 次"},"zh-TW":{n:"低筋麵粉",s:"過篩 1 次"},en:{n:"Cake flour",s:"sifted once"}},
+  "chocolate-chip|黄油":{zh:{n:"黄油",s:"冷藏硬块切丁"},"zh-TW":{n:"奶油",s:"冷藏硬塊切丁"},en:{n:"Butter",s:"cold, cubed"}},
+  "chocolate-chip|红糖":{zh:{n:"红糖",s:"细纹，压实在量杯里"},"zh-TW":{n:"紅糖",s:"細紋，壓實在量杯裡"},en:{n:"Brown sugar",s:"packed into cup"}},
+  "chocolate-chip|白砂糖":{zh:{n:"白砂糖",s:"细砂糖"},"zh-TW":{n:"白砂糖",s:"細砂糖"},en:{n:"Granulated sugar",s:"fine"}},
+  "chocolate-chip|鸡蛋":{zh:{n:"鸡蛋",s:"1 个（约 50g，室温）"},"zh-TW":{n:"雞蛋",s:"1 個（約 50g，室溫）"},en:{n:"Egg",s:"1 large (~50g), room temp"}},
+  "chocolate-chip|香草精":{zh:{n:"香草精",s:"¼ 茶匙"},"zh-TW":{n:"香草精",s:"¼ 茶匙"},en:{n:"Vanilla extract",s:"¼ tsp"}},
+  "chocolate-chip|小苏打":{zh:{n:"小苏打",s:"½ 茶匙（小撮）"},"zh-TW":{n:"小蘇打",s:"½ 茶匙（少許）"},en:{n:"Baking soda",s:"½ tsp"}},
+  "chocolate-chip|盐":{zh:{n:"盐",s:"一小撮"},"zh-TW":{n:"鹽",s:"少許"},en:{n:"Salt",s:"a pinch"}},
+  "chocolate-chip|巧克力豆":{zh:{n:"巧克力豆",s:"烘焙用 60% 可可"},"zh-TW":{n:"巧克力豆",s:"烘焙用 60% 可可"},en:{n:"Chocolate chips",s:"baking, 60% cacao"}},
+  /* 黄油司康 */
+  "butter|低筋面粉":{zh:{n:"低筋面粉",s:"过筛"},"zh-TW":{n:"低筋麵粉",s:"過篩"},en:{n:"Cake flour",s:"sifted"}},
+  "butter|黄油":{zh:{n:"黄油",s:"冷藏切 5mm 小丁"},"zh-TW":{n:"奶油",s:"冷藏切 5mm 小丁"},en:{n:"Butter",s:"cold, 5mm dice"}},
+  "butter|细砂糖":{zh:{n:"细砂糖",s:"或黄糖 1:1"},"zh-TW":{n:"細砂糖",s:"或黃糖 1:1"},en:{n:"Granulated sugar",s:"or 1:1 brown"}},
+  "butter|泡打粉":{zh:{n:"泡打粉",s:"1½ 茶匙"},"zh-TW":{n:"泡打粉",s:"1½ 茶匙"},en:{n:"Baking powder",s:"1½ tsp"}},
+  "butter|盐":{zh:{n:"盐",s:"一小撮"},"zh-TW":{n:"鹽",s:"少許"},en:{n:"Salt",s:"a pinch"}},
+  "butter|全脂牛奶":{zh:{n:"全脂牛奶",s:"冷藏，约 ⅓ 杯"},"zh-TW":{n:"全脂牛奶",s:"冷藏，約 ⅓ 杯"},en:{n:"Whole milk",s:"cold, ~⅓ cup"}},
+  "butter|鸡蛋":{zh:{n:"鸡蛋",s:"1 个，刷面用"},"zh-TW":{n:"雞蛋",s:"1 個，刷麵用"},en:{n:"Egg",s:"1, for egg wash"}},
+  "butter|细砂糖（面）":{zh:{n:"细砂糖（面）",s:"最后撒面"},"zh-TW":{n:"細砂糖（麵）",s:"最後撒麵"},en:{n:"Sugar (top)",s:"sprinkle on top"}},
+  /* 香蕉面包 */
+  "banana-bread|香蕉":{zh:{n:"香蕉",s:"2~3 根熟透的"},"zh-TW":{n:"香蕉",s:"2~3 根熟透的"},en:{n:"Banana",s:"2~3 very ripe"}},
+  "banana-bread|低筋面粉":{zh:{n:"低筋面粉",s:"过筛"},"zh-TW":{n:"低筋麵粉",s:"過篩"},en:{n:"Cake flour",s:"sifted"}},
+  "banana-bread|泡打粉":{zh:{n:"泡打粉",s:"1½ 茶匙"},"zh-TW":{n:"泡打粉",s:"1½ 茶匙"},en:{n:"Baking powder",s:"1½ tsp"}},
+  "banana-bread|小苏打":{zh:{n:"小苏打",s:"1 茶匙"},"zh-TW":{n:"小蘇打",s:"1 茶匙"},en:{n:"Baking soda",s:"1 tsp"}},
+  "banana-bread|盐":{zh:{n:"盐",s:"½ 茶匙"},"zh-TW":{n:"鹽",s:"½ 茶匙"},en:{n:"Salt",s:"½ tsp"}},
+  "banana-bread|黄油":{zh:{n:"黄油",s:"融化，略凉"},"zh-TW":{n:"奶油",s:"融化，略涼"},en:{n:"Butter",s:"melted, cooled"}},
+  "banana-bread|细砂糖":{zh:{n:"细砂糖",s:"白 50g + 黄 20g"},"zh-TW":{n:"細砂糖",s:"白 50g + 黃 20g"},en:{n:"Sugar",s:"50g white + 20g brown"}},
+  "banana-bread|鸡蛋":{zh:{n:"鸡蛋",s:"1 个"},"zh-TW":{n:"雞蛋",s:"1 個"},en:{n:"Egg",s:"1"}},
+  "banana-bread|香草精":{zh:{n:"香草精",s:"1 茶匙"},"zh-TW":{n:"香草精",s:"1 茶匙"},en:{n:"Vanilla extract",s:"1 tsp"}},
+  "banana-bread|核桃（可选）":{zh:{n:"核桃（可选）",s:"切碎"},"zh-TW":{n:"核桃（可選）",s:"切碎"},en:{n:"Walnuts (opt)",s:"chopped"}},
+  /* 松饼 */
+  "pancakes|中筋面粉":{zh:{n:"中筋面粉",s:"过筛"},"zh-TW":{n:"中筋麵粉",s:"過篩"},en:{n:"All-purpose flour",s:"sifted"}},
+  "pancakes|泡打粉":{zh:{n:"泡打粉",s:"2 茶匙"},"zh-TW":{n:"泡打粉",s:"2 茶匙"},en:{n:"Baking powder",s:"2 tsp"}},
+  "pancakes|细砂糖":{zh:{n:"细砂糖",s:"2 汤匙"},"zh-TW":{n:"細砂糖",s:"2 湯匙"},en:{n:"Granulated sugar",s:"2 tbsp"}},
+  "pancakes|盐":{zh:{n:"盐",s:"¼ 茶匙"},"zh-TW":{n:"鹽",s:"¼ 茶匙"},en:{n:"Salt",s:"¼ tsp"}},
+  "pancakes|牛奶":{zh:{n:"牛奶",s:"常温，¾ 杯"},"zh-TW":{n:"牛奶",s:"常溫，¾ 杯"},en:{n:"Milk",s:"room temp, ¾ cup"}},
+  "pancakes|鸡蛋":{zh:{n:"鸡蛋",s:"1 个"},"zh-TW":{n:"雞蛋",s:"1 個"},en:{n:"Egg",s:"1"}},
+  "pancakes|黄油（融化）":{zh:{n:"黄油（融化）",s:"1 汤匙"},"zh-TW":{n:"奶油（融化）",s:"1 湯匙"},en:{n:"Butter (melted)",s:"1 tbsp"}},
+  "pancakes|香草精（可选）":{zh:{n:"香草精（可选）",s:"½ 茶匙"},"zh-TW":{n:"香草精（可選）",s:"½ 茶匙"},en:{n:"Vanilla (opt)",s:"½ tsp"}},
+  /* 纽约芝士蛋糕 */
+  "cheesecake|消化饼干":{zh:{n:"消化饼干",s:"压碎成粉"},"zh-TW":{n:"消化餅乾",s:"壓碎成粉"},en:{n:"Digestive biscuits",s:"crushed to crumbs"}},
+  "cheesecake|黄油（融化）":{zh:{n:"黄油（融化）",s:"3½ 汤匙"},"zh-TW":{n:"奶油（融化）",s:"3½ 湯匙"},en:{n:"Butter (melted)",s:"3½ tbsp"}},
+  "cheesecake|奶油奶酪":{zh:{n:"奶油奶酪",s:"室温软化"},"zh-TW":{n:"奶油乳酪",s:"室溫軟化"},en:{n:"Cream cheese",s:"room temp, softened"}},
+  "cheesecake|细砂糖":{zh:{n:"细砂糖",s:"½ 杯（压实）"},"zh-TW":{n:"細砂糖",s:"½ 杯（压实）"},en:{n:"Granulated sugar",s:"½ cup, packed"}},
+  "cheesecake|鸡蛋":{zh:{n:"鸡蛋",s:"3 个，室温"},"zh-TW":{n:"雞蛋",s:"3 個，室溫"},en:{n:"Eggs",s:"3, room temp"}},
+  "cheesecake|淡奶油":{zh:{n:"淡奶油",s:"¼ 杯（33%）"},"zh-TW":{n:"鮮奶油",s:"¼ 杯（33%）"},en:{n:"Heavy cream",s:"¼ cup (33%)"}},
+  "cheesecake|香草精":{zh:{n:"香草精",s:"1 茶匙"},"zh-TW":{n:"香草精",s:"1 茶匙"},en:{n:"Vanilla extract",s:"1 tsp"}},
+  "cheesecake|柠檬汁":{zh:{n:"柠檬汁",s:"½ 茶匙（可选）"},"zh-TW":{n:"檸檬汁",s:"½ 茶匙（可選）"},en:{n:"Lemon juice",s:"½ tsp (opt)"}},
+  "cheesecake|盐":{zh:{n:"盐",s:"一小撮"},"zh-TW":{n:"鹽",s:"少許"},en:{n:"Salt",s:"a pinch"}},
+  /* 可颂 */
+  "croissant|高筋面粉":{zh:{n:"高筋面粉",s:"面包粉"},"zh-TW":{n:"高筋麵粉",s:"麵包粉"},en:{n:"Bread flour",s:"strong flour"}},
+  "croissant|细砂糖":{zh:{n:"细砂糖",s:"3 汤匙"},"zh-TW":{n:"細砂糖",s:"3 湯匙"},en:{n:"Granulated sugar",s:"3 tbsp"}},
+  "croissant|干酵母":{zh:{n:"干酵母",s:"1½ 茶匙（约 1 小包）"},"zh-TW":{n:"乾酵母",s:"1½ 茶匙（約 1 小包）"},en:{n:"Dried yeast",s:"1½ tsp (~1 pkt)"}},
+  "croissant|盐":{zh:{n:"盐",s:"1 茶匙"},"zh-TW":{n:"鹽",s:"1 茶匙"},en:{n:"Salt",s:"1 tsp"}},
+  "croissant|全脂牛奶":{zh:{n:"全脂牛奶",s:"⅓ 杯（温 38°C）"},"zh-TW":{n:"全脂牛奶",s:"⅓ 杯（溫 38°C）"},en:{n:"Whole milk",s:"⅓ cup (38°C)"}},
+  "croissant|鸡蛋":{zh:{n:"鸡蛋",s:"1 个（室温）"},"zh-TW":{n:"雞蛋",s:"1 個（室溫）"},en:{n:"Egg",s:"1 (room temp)"}},
+  "croissant|无盐黄油":{zh:{n:"无盐黄油",s:"冷藏成 1cm 方片"},"zh-TW":{n:"無鹽奶油",s:"冷藏成 1cm 方片"},en:{n:"Unsalted butter",s:"cold, 1cm slabs"}},
+  "croissant|蛋液":{zh:{n:"蛋液",s:"1 个蛋黄 + 少许牛奶"},"zh-TW":{n:"蛋液",s:"1 個蛋黃 + 少許牛奶"},en:{n:"Egg wash",s:"1 yolk + a little milk"}},
+  /* 港式奶茶 */
+  "milk-tea|锡兰红茶":{zh:{n:"锡兰红茶",s:"1 茶匙 × 4 杯"},"zh-TW":{n:"錫蘭紅茶",s:"1 茶匙 × 4 杯"},en:{n:"Ceylon black tea",s:"1 tsp × 4 cups"}},
+  "milk-tea|水":{zh:{n:"水",s:"24 盎司（960ml 煮后约 480ml）"},"zh-TW":{n:"水",s:"24 盎司（960ml 煮後約 480ml）"},en:{n:"Water",s:"24 oz (~480ml after steep)"}},
+  "milk-tea|淡奶（Evaporated）":{zh:{n:"淡奶（Evaporated）",s:"¼ 杯 × 4"},"zh-TW":{n:"淡奶（Evaporated）",s:"¼ 杯 × 4"},en:{n:"Evaporated milk",s:"¼ cup × 4"}},
+  "milk-tea|炼乳":{zh:{n:"炼乳",s:"4 汤匙"},"zh-TW":{n:"煉乳",s:"4 湯匙"},en:{n:"Condensed milk",s:"4 tbsp"}},
+  "milk-tea|细砂糖（可选）":{zh:{n:"细砂糖（可选）",s:"1 汤匙"},"zh-TW":{n:"細砂糖（可選）",s:"1 湯匙"},en:{n:"Sugar (opt)",s:"1 tbsp"}},
+  /* 抹茶曲奇 */
+  "matcha|低筋面粉":{zh:{n:"低筋面粉",s:"过筛"},"zh-TW":{n:"低筋麵粉",s:"過篩"},en:{n:"Cake flour",s:"sifted"}},
+  "matcha|抹茶粉":{zh:{n:"抹茶粉",s:"烘焙级 4 茶匙"},"zh-TW":{n:"抹茶粉",s:"烘焙級 4 茶匙"},en:{n:"Matcha powder",s:"baking grade, 4 tsp"}},
+  "matcha|黄油":{zh:{n:"黄油",s:"冷藏切丁"},"zh-TW":{n:"奶油",s:"冷藏切丁"},en:{n:"Butter",s:"cold, cubed"}},
+  "matcha|细砂糖":{zh:{n:"细砂糖",s:"⅕ 杯"},"zh-TW":{n:"細砂糖",s:"⅕ 杯"},en:{n:"Granulated sugar",s:"⅕ cup"}},
+  "matcha|糖粉":{zh:{n:"糖粉",s:"过筛"},"zh-TW":{n:"糖粉",s:"過篩"},en:{n:"Powdered sugar",s:"sifted"}},
+  "matcha|鸡蛋":{zh:{n:"鸡蛋",s:"½ 个（约 25g）"},"zh-TW":{n:"雞蛋",s:"½ 個（約 25g）"},en:{n:"Egg",s:"½ (~25g)"}},
+  "matcha|盐":{zh:{n:"盐",s:"一小撮"},"zh-TW":{n:"鹽",s:"少許"},en:{n:"Salt",s:"a pinch"}},
+};
+
+const NOTES_I18N = {
+  "chocolate-chip":{
+    zh:"面团冷藏 30 分钟更易成型；巧克力块最后加入避免融化。烤到边缘金黄、中心微软即可，出炉还会再变硬。",
+    "zh-TW":"麵團冷藏 30 分鐘更易成型；巧克力塊最後加入避免融化。烤到邊緣金黃、中心微軟即可，出爐還會再變硬。",
+    en:"Chill the dough 30 min for easier shaping; add chocolate last so it won't melt. Bake until edges are golden and centers still soft — they firm up as they cool."
+  },
+  "butter":{
+    zh:"黄油要全程冷藏；面粉和黄油混合后用叉子压碎成粗粒，不要揉成面团。烤到表面金黄即可，出炉配奶油和果酱。",
+    "zh-TW":"奶油要全程冷藏；麵粉和奶油混合後用叉子壓碎成粗粒，不要揉成麵團。烤到表面金黃即可，出爐配奶油和果醬。",
+    en:"Keep butter cold throughout. Rub it into the flour with a fork until coarse crumb forms — don't knead. Bake until golden, serve with clotted cream and jam."
+  },
+  "banana-bread":{
+    zh:"香蕉越熟越甜；面糊一次不要过度搅拌，避免出筋。用竹签插到中心干净即熟。烤好放凉再切片。",
+    "zh-TW":"香蕉越熟越甜；麵糊一次不要過度攪拌，避免出筋。用竹籤插到中心乾淨即熟。烤好放涼再切片。",
+    en:"The riper the banana, the sweeter. Mix the batter once — over-stirring makes it tough. Done when a skewer comes out clean. Cool before slicing."
+  },
+  "pancakes":{
+    zh:"面糊要浓稠能流动；不粘锅小火，看到表面出小气泡再翻。可配枫糖浆、莓果、奶油。",
+    "zh-TW":"麵糊要濃稠能流動；不粘鍋小火，看到表面出小氣泡再翻。可配楓糖漿、莓果、奶油。",
+    en:"Batter should be thick but pourable. Cook on a non-stick pan over low heat, flip when bubbles pop on the surface. Pair with maple syrup, berries, cream."
+  },
+  "cheesecake":{
+    zh:"奶油奶酪要室温软化；水浴烤防开裂。烤完别立刻开炉门，焖 15 分钟再取出。冷藏过夜更好切。",
+    "zh-TW":"奶油乳酪要室溫軟化；水浴烤防開裂。烤完別立刻開爐門，悶 15 分鐘再取出。冷藏過夜更好切。",
+    en:"Soften cream cheese to room temp; bake in a water bath to prevent cracking. Don't open the oven right after — let it sit 15 min. Chill overnight for clean slices."
+  },
+  "croissant":{
+    zh:"发酵面团要冷藏到黄油变硬再开始折叠；每折一次冷藏 30 分钟。卷到 20cm 再切，尖端朝外弯。",
+    "zh-TW":"發酵麵團要冷藏到奶油變硬再開始折疊；每折一次冷藏 30 分鐘。卷到 20cm 再切，尖端朝外彎。",
+    en:"Chill the dough until butter is firm before each fold; rest 30 min between folds. Roll to 20cm, cut, and curl the tips outward."
+  },
+  "milk-tea":{
+    zh:"茶叶用锡兰红茶（Ceylon），煮到 5 分钟关火焖 3 分钟。炼乳和淡奶按 2:1 配；喜欢甜可多加 1 茶匙。",
+    "zh-TW":"茶葉用錫蘭紅茶（Ceylon），煮到 5 分鐘關火悶 3 分鐘。煉乳和淡奶按 2:1 配；喜歡甜可多加 1 茶匙。",
+    en:"Use Ceylon black tea; steep 5 min then rest 3 min off heat. Mix condensed milk and evaporated milk 2:1; add 1 more tsp if you like it sweeter."
+  },
+  "matcha":{
+    zh:"抹茶用烘焙级（ceremonial 级太苦）。面团冷藏 1 小时再切；挤出的花纹要尖。",
+    "zh-TW":"抹茶用烘焙級（ceremonial 級太苦）。麵團冷藏 1 小時再切；擠出的花紋要尖。",
+    en:"Use baking-grade matcha (ceremonial grade is too bitter). Chill dough 1 hour before cutting; keep the piped pattern points sharp."
+  },
+};
+
+/* 取当前语言的食材显示名 / 备注 */
+function ingLabel(recipeKey, ing){
+  const map = ING_I18N[recipeKey + "|" + ing.name];
+  const e = map ? (map[lang] || map.zh) : null;
+  return { name: e ? e.n : ing.name, sub: e ? e.s : (ing.sub||"") };
+}
+function notesOf(key){
+  const m = NOTES_I18N[key];
+  return m ? (m[lang] || m.zh || "") : "";
+}
+
+/* ============================================================
+   状态
+   ============================================================ */
+let currentRecipe = RECIPES[0];
+let baseServing = currentRecipe.baseServing;
+let targetServing = currentRecipe.baseServing;
+let displayUnit = "g";   // g | cup | tool
+let checked = {};         // key -> bool（哪些食材已准备）
+
+const $ = (id) => document.getElementById(id);
+
+/* ============================================================
+   食谱名 / 分类 / 份量 / 时间 的三语映射
+   结构：RECIPE_I18N[recipeKey][lang] = {name, cat, yield, prep, cook}
+   ============================================================ */
+const RECIPE_I18N = {
+  "chocolate-chip": {
+    zh:    {name:"经典巧克力曲奇", cat:"饼干", yield:"24 块", prep:"准备 20 分钟", cook:"烤 12 分钟"},
+    "zh-TW":{name:"經典巧克力餅乾", cat:"餅乾", yield:"24 塊", prep:"準備 20 分鐘", cook:"烤 12 分鐘"},
+    en:    {name:"Classic Chocolate Chip Cookies", cat:"Cookies", yield:"24 pcs", prep:"Prep 20 min", cook:"Bake 12 min"}
+  },
+  "butter": {
+    zh:    {name:"黄油司康", cat:"英式点心", yield:"12 个", prep:"准备 25 分钟", cook:"烤 15 分钟"},
+    "zh-TW":{name:"奶油司康", cat:"英式點心", yield:"12 個", prep:"準備 25 分鐘", cook:"烤 15 分鐘"},
+    en:    {name:"Butter Scones", cat:"British Pastry", yield:"12 pcs", prep:"Prep 25 min", cook:"Bake 15 min"}
+  },
+  "banana-bread": {
+    zh:    {name:"香蕉面包", cat:"磅蛋糕", yield:"1 条（切 10 片）", prep:"准备 15 分钟", cook:"烤 55 分钟"},
+    "zh-TW":{name:"香蕉麵包", cat:"磅蛋糕", yield:"1 條（切 10 片）", prep:"準備 15 分鐘", cook:"烤 55 分鐘"},
+    en:    {name:"Banana Bread", cat:"Loom Cake", yield:"1 loaf (10 slices)", prep:"Prep 15 min", cook:"Bake 55 min"}
+  },
+  "pancakes": {
+    zh:    {name:"松饼（煎饼）", cat:"早餐", yield:"约 8 张（厚松饼）", prep:"准备 10 分钟", cook:"每面 2~3 分钟"},
+    "zh-TW":{name:"鬆餅（煎餅）", cat:"早餐", yield:"約 8 張（厚鬆餅）", prep:"準備 10 分鐘", cook:"每面 2~3 分鐘"},
+    en:    {name:"Fluffy Pancakes", cat:"Breakfast", yield:"≈8 (thick)", prep:"Prep 10 min", cook:"2~3 min/side"}
+  },
+  "cheesecake": {
+    zh:    {name:"纽约芝士蛋糕", cat:"蛋糕", yield:"8~10 块", prep:"准备 30 分钟", cook:"水浴烤 55 分钟"},
+    "zh-TW":{name:"紐約起司蛋糕", cat:"蛋糕", yield:"8~10 塊", prep:"準備 30 分鐘", cook:"水烤 55 分鐘"},
+    en:    {name:"New York Cheesecake", cat:"Cake", yield:"8~10 slices", prep:"Prep 30 min", cook:"Water-bath 55 min"}
+  },
+  "croissant": {
+    zh:    {name:"原味可颂", cat:"欧包", yield:"6 个", prep:"准备 90 分钟 + 冷藏 2 小时", cook:"烤 20 分钟"},
+    "zh-TW":{name:"原味可頌", cat:"歐式麵包", yield:"6 個", prep:"準備 90 分鐘 + 冷藏 2 小時", cook:"烤 20 分鐘"},
+    en:    {name:"Plain Croissants", cat:"European Bread", yield:"6 pcs", prep:"90 min + 2h chill", cook:"Bake 20 min"}
+  },
+  "milk-tea": {
+    zh:    {name:"港式丝袜奶茶", cat:"饮品", yield:"4 杯（约 240ml/杯）", prep:"准备 5 分钟", cook:"煮 8 分钟"},
+    "zh-TW":{name:"港式絲襪奶茶", cat:"飲品", yield:"4 杯（約 240ml/杯）", prep:"準備 5 分鐘", cook:"煮 8 分鐘"},
+    en:    {name:"HK Silk-Sock Milk Tea", cat:"Beverage", yield:"4 cups (≈240ml)", prep:"Prep 5 min", cook:"Steep 8 min"}
+  },
+  "matcha": {
+    zh:    {name:"抹茶曲奇", cat:"饼干", yield:"30 块", prep:"准备 25 分钟", cook:"烤 10 分钟"},
+    "zh-TW":{name:"抹茶餅乾", cat:"餅乾", yield:"30 塊", prep:"準備 25 分鐘", cook:"烤 10 分鐘"},
+    en:    {name:"Matcha Cookies", cat:"Cookies", yield:"30 pcs", prep:"Prep 25 min", cook:"Bake 10 min"}
+  },
+};
+function metaOf(key){
+  const map = RECIPE_I18N[key] || {};
+  return map[lang] || map.zh || {};
+}
+
+/* ============================================================
+   渲染食谱卡片
+   ============================================================ */
+function renderRecipes(){
+  const grid = $("recipeGrid");
+  grid.innerHTML = RECIPES.map(r=>{
+    const img = `images/${r.key}.png`;
+    const fav = localStorage.getItem(`fav-${r.key}`)==="1";
+    const m = metaOf(r.key);
+    return `
+      <div class="recipe-card ${r.key===currentRecipe.key?'active':''}" data-key="${r.key}">
+        <img src="${img}" alt="${r.name}" loading="lazy">
+        <div class="rc-fav ${fav?'on':''}" data-fav="${r.key}">${fav?'♥':'♡'}</div>
+        <div class="rc-body">
+          <div class="rc-name">${m.name || r.name}</div>
+          <div class="rc-meta">${m.cat||r.cat} · ${m.yield||r.yieldText}<br>${m.prep||r.prep} · ${m.cook||r.cook}</div>
+        </div>
+      </div>`;
+  }).join("");
+  grid.querySelectorAll(".recipe-card").forEach(el=>{
+    el.addEventListener("click", e=>{
+      // 点收藏按钮不切换食谱
+      if(e.target.closest("[data-fav]")) return;
+      selectRecipe(el.dataset.key);
+    });
+  });
+  grid.querySelectorAll("[data-fav]").forEach(el=>{
+    el.addEventListener("click", e=>{
+      e.stopPropagation();
+      const key = el.dataset.fav;
+      const on = localStorage.getItem(`fav-${key}`) !== "1";
+      localStorage.setItem(`fav-${key}`, on?"1":"0");
+      el.classList.toggle("on", on);
+      el.textContent = on ? "♥" : "♡";
+      toast(on ? t("toastFaved") : t("toastUnfaved"));
+    });
+  });
+}
+
+function selectRecipe(key){
+  currentRecipe = RECIPES.find(r=>r.key===key);
+  baseServing = currentRecipe.baseServing;
+  targetServing = currentRecipe.baseServing;
+  $("baseInput").value = baseServing;
+  $("targetInput").value = targetServing;
+  checked = {};
+  renderRecipes();
+  renderAll();
+  syncTabTitle();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ============================================================
+   份数预设
+   ============================================================ */
+function renderPresets(){
+  const presets = [1, 2, 4, 6, 8, 12, 16, 24];
+  const el = $("targetPresets");
+  el.innerHTML = presets.map(n=>{
+    const on = n === targetServing ? "on":"";
+    return `<button class="chip ${on}" data-n="${n}">${n} ${t("presetSuffix")}</button>`;
+  }).join("");
+  el.querySelectorAll(".chip").forEach(c=>{
+    c.addEventListener("click", ()=>{
+      targetServing = parseInt(c.dataset.n, 10);
+      $("targetInput").value = targetServing;
+      renderAll();
+    });
+  });
+}
+
+/* ============================================================
+   食材换算
+   ============================================================ */
+function scaledAmount(ing){
+  const factor = targetServing / baseServing;
+  return ing.g * factor;
+}
+
+function unitText(amountG, ing){
+  if(displayUnit === "tool"){
+    // 直接显示厨房量具描述
+    const factor = targetServing / baseServing;
+    return {value:ing.tool, sub:`≈ ${Math.round(amountG)} g（按比例 ×${factor.toFixed(2)}）`};
+  }
+  if(displayUnit === "cup"){
+    // 杯/量勺：1 杯 ≈ 240ml 水，但烘焙中"1 杯面粉" ≈ 120g
+    // 简化：用 ing.vol（已折算成 1 杯的克数比）
+    const cups = amountG / (ing.vol > 0 ? (240 * ing.vol) : 1);
+    // 简化展示：直接按"杯"换算
+    const cupsApprox = amountG / 240; // 粗略：1 杯 = 240 体积单位
+    return {value:cupsApprox.toFixed(2), sub:"杯（约）", unit:"杯"};
+  }
+  // 克/毫升
+  const isLiquid = /牛奶|黄油|水|奶油|蛋液|淡奶/.test(ing.name);
+  if(isLiquid && ing.g === undefined && ing.ml){
+    return {value:Math.round(ing.ml), unit:"ml"};
+  }
+  const display = amountG >= 10 ? Math.round(amountG) : (amountG * 10).toFixed(0)/10;
+  return {value:display, unit: isLiquid ? "g" : "g"};
+}
+
+function renderIngredients(){
+  const tbody = $("ingBody");
+  const maxG = Math.max(...currentRecipe.ingredients.map(i=>i.g));
+  const factor = targetServing / baseServing;
+
+  tbody.innerHTML = currentRecipe.ingredients.map((ing, idx)=>{
+    const amt = scaledAmount(ing);
+    const u = unitText(amt, ing);
+    const pct = maxG ? (ing.g / maxG * 100) : 0;
+    const origText = ing.tool ? ing.tool : `${ing.g} g`;
+    const isChecked = checked[ing.name];
+    const lbl = ingLabel(currentRecipe.key, ing);
+    return `
+      <tr>
+        <td><input type="checkbox" class="ing-check" data-name="${ing.name}" ${isChecked?"checked":""}></td>
+        <td>
+          <div class="ing-name">${lbl.name}</div>
+          <div class="ing-sub">${lbl.sub || ""}</div>
+        </td>
+        <td style="text-align:right">
+          <div class="ing-amount">${u.value}<span class="unit">${u.unit||""}</span></div>
+          ${u.sub ? `<div class="ing-sub" style="text-align:right">${u.sub}</div>`:""}
+        </td>
+        <td style="text-align:right" class="ing-orig">${origText}</td>
+        <td>
+          <div class="ing-bar"><div style="width:${pct}%"></div></div>
+        </td>
+        <td style="text-align:right"><span class="ing-pct">${pct.toFixed(0)}%</span></td>
+      </tr>`;
+  }).join("");
+
+  // 勾选交互
+  tbody.querySelectorAll(".ing-check").forEach(c=>{
+    c.addEventListener("change", ()=>{
+      checked[c.dataset.name] = c.checked;
+      // 简单持久化（localStorage）
+      try{ localStorage.setItem(`chk-${currentRecipe.key}`, JSON.stringify(checked)); }catch(e){}
+    });
+  });
+
+  // 统计
+  const totalG = currentRecipe.ingredients.reduce((s,i)=>s + scaledAmount(i), 0);
+  const liquidG = currentRecipe.ingredients.reduce((s,i)=>{
+    const isLiq = /牛奶|黄油|水|奶油|蛋液|淡奶|鸡蛋|蛋/.test(i.name);
+    return s + (isLiq ? scaledAmount(i) : 0);
+  },0);
+  const dryG = totalG - liquidG;
+
+  const statRow = $("statRow");
+  statRow.innerHTML = `
+    <div class="stat"><div class="k">${t("statTotal")}</div><div class="v">${Math.round(totalG)}<span class="u">g</span></div></div>
+    <div class="stat"><div class="k">${t("statLiquid")}</div><div class="v">${Math.round(liquidG)}<span class="u">g</span></div></div>
+    <div class="stat"><div class="k">${t("statDry")}</div><div class="v">${Math.round(dryG)}<span class="u">g</span></div></div>
+    <div class="stat"><div class="k">${t("statScale")}</div><div class="v">×${factor.toFixed(2)}</div></div>
+  `;
+
+  // 注意事项（走三语）
+  const note = notesOf(currentRecipe.key) || currentRecipe.notes;
+  $("notesBlock").innerHTML = `<strong>${t("notesLabel")}</strong>${note}`;
+  $("ingTitle").textContent = `${metaOf(currentRecipe.key).name || currentRecipe.name} · ${t("ingTitle")}（${targetServing} ${t("presetSuffix")}）`;
+
+  // 缩放读出
+  const readout = $("scaleReadout");
+  const scaleTitle = document.getElementById("scaleTitle");
+  if(scaleTitle) scaleTitle.textContent = t("panelScale", {base: baseServing, target: targetServing});
+  const pct = factor >= 1 ? Math.round((factor-1)*100) : 0;
+  readout.innerHTML = factor === 1
+    ? `<span>${t("readout1x")}</span>`
+    : `<span>${t("readoutScale",{f:factor.toFixed(2)})}</span>
+       <span>${t("readoutDelta",{dir: factor>1 ? t("dirMore") : t("dirLess"), p: Math.abs(pct)})}</span>
+       <span>${t("readoutYield",{n: Math.round((currentRecipe.yieldText.match(/\d+/)?parseInt(currentRecipe.yieldText.match(/\d+/)[0]):0) * factor), unit: currentRecipe.yieldText.replace(/\d+/,"").trim()})}</span>`;
+}
+
+function renderAll(){
+  renderPresets();
+  renderIngredients();
+}
+
+/* ============================================================
+   事件绑定
+   ============================================================ */
+$("baseInput").addEventListener("change", e=>{
+  const v = parseInt(e.target.value,10) || 1;
+  baseServing = Math.max(1, Math.min(100, v));
+  e.target.value = baseServing;
+  renderAll();
+});
+$("targetInput").addEventListener("change", e=>{
+  const v = parseInt(e.target.value,10) || 1;
+  targetServing = Math.max(1, Math.min(200, v));
+  e.target.value = targetServing;
+  renderAll();
+});
+document.querySelectorAll(".servings .btn").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    const input = b.dataset.step === "base" ? $("baseInput") : $("targetInput");
+    const delta = b.textContent.trim() === "+" ? 1 : -1;
+    input.value = Math.max(1, parseInt(input.value,10)||1 + delta);
+    input.dispatchEvent(new Event("change"));
+  });
+});
+document.querySelectorAll(".unit-btn").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    document.querySelectorAll(".unit-btn").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    displayUnit = b.dataset.unit;
+    renderIngredients();
+  });
+});
+$("resetBtn").addEventListener("click", ()=>{
+  targetServing = currentRecipe.baseServing;
+  $("targetInput").value = targetServing;
+  renderAll();
+  toast(t("toastReset"));
+});
+$("scaleToTarget").addEventListener("click", ()=>{
+  if(targetServing === baseServing){ toast(t("toastAlreadyTarget")); return; }
+  toast(t("toastScaled",{base: baseServing, target: targetServing, f: (targetServing/baseServing).toFixed(2)}));
+});
+$("copyBtn").addEventListener("click", async ()=>{
+  const lines = currentRecipe.ingredients.map((ing,i)=>{
+    const amt = scaledAmount(ing);
+    const u = unitText(amt, ing);
+    const lbl = ingLabel(currentRecipe.key, ing);
+    const paren = lang==="en" ? "(" : "（";
+    const parenEnd = lang==="en" ? ")" : "）";
+    const arrow = lang==="en" ? "->" : "→";
+    const dot = lang==="en" ? " " : " · ";
+    return `${i+1}. ${lbl.name} ${lbl.sub ? paren+lbl.sub+parenEnd : ""} ${arrow} ${u.value}${u.unit||" g"}${u.sub ? dot+u.sub : ""}`;
+  });
+  const head = t("copyHeader",{name: metaOf(currentRecipe.key).name || currentRecipe.name, n: targetServing, f: (targetServing/baseServing).toFixed(2)});
+  const text = `${head}\n` + lines.join("\n");
+  try{
+    await navigator.clipboard.writeText(text);
+    toast(t("toastCopied"));
+  }catch(e){
+    toast(t("toastCopyFail"));
+  }
+});
+
+let toastTimer;
+function toast(msg){
+  const el = $("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove("show"), 2000);
+}
+
+/* ============================================================
+   i18n 多语言（简中 / 繁中 / 英）
+   ============================================================ */
+const I18N = {
+  zh: {
+    title: "烘焙食谱计算器",
+    subtitle: "食材克数换算 · 份数缩放 · 精准配比",
+    metaRecipes: "8 道预置食谱",
+    metaUnits: "单位：克 / 毫升 / 勺（克重 + 体积 + 工具三档）",
+    panelScale: "份数缩放（原始 {base} 人份 → 目标 {target} 人份）",
+    labelBase: "原始份数（食谱基准）",
+    labelTarget: "目标份数（想烤的量）",
+    panelUnit: "单位模式",
+    unitLbl: "显示",
+    unitG: "克 / 毫升",
+    unitCup: "杯 / 量勺",
+    unitTool: "厨房量具",
+    ingTitle: "食材清单",
+    thIng: "食材",
+    thCur: "当前用量",
+    thOrig: "原始用量",
+    thRatio: "相对配比",
+    thPct: "占主料 %",
+    statTotal: "总重量",
+    statLiquid: "液体 / 油脂",
+    statDry: "粉 / 干料",
+    statScale: "缩放比",
+    notesLabel: "小贴士：",
+    copy: "复制整张清单",
+    reset: "重置为原始份数",
+    scaleTo: "放大到目标份数",
+    presetSuffix: "人份",
+    toastFaved: "已收藏",
+    toastUnfaved: "已取消收藏",
+    toastReset: "已重置为原始份数",
+    toastAlreadyTarget: "当前已是目标份数",
+    toastScaled: "已放大 {base} → {target} 人份（×{f}）",
+    toastCopied: "已复制到剪贴板",
+    toastCopyFail: "复制失败：浏览器限制",
+    readout1x: "当前份数 = 原始份数（×1.00，未缩放）",
+    readoutScale: "缩放比 <strong>×{f}</strong>",
+    readoutDelta: "{dir}<strong>{p}%</strong>",
+    readoutYield: "对应约 <strong>{n}</strong> {unit}",
+    dirMore: "比原始多 ",
+    dirLess: "比原始少 ",
+    copyHeader: "【{name} · {n} 人份 · 缩放 ×{f}】",
+  },
+  "zh-TW": {
+    title: "烘焙食譜計算器",
+    subtitle: "食材克數換算 · 份數縮放 · 精準配比",
+    metaRecipes: "8 道預置食譜",
+    metaUnits: "單位：克 / 毫升 / 勺（克重 + 體積 + 工具三檔）",
+    panelScale: "份數縮放（原始 {base} 人份 → 目標 {target} 人份）",
+    labelBase: "原始份數（食譜基準）",
+    labelTarget: "目標份數（想烤的量）",
+    panelUnit: "單位模式",
+    unitLbl: "顯示",
+    unitG: "克 / 毫升",
+    unitCup: "杯 / 量勺",
+    unitTool: "廚房量具",
+    ingTitle: "食材清單",
+    thIng: "食材",
+    thCur: "目前用量",
+    thOrig: "原始用量",
+    thRatio: "相對配比",
+    thPct: "占主料 %",
+    statTotal: "總重量",
+    statLiquid: "液體 / 油脂",
+    statDry: "粉 / 乾料",
+    statScale: "縮放比",
+    notesLabel: "小貼士：",
+    copy: "複製整張清單",
+    reset: "重設為原始份數",
+    scaleTo: "放大到目標份數",
+    presetSuffix: "人份",
+    toastFaved: "已收藏",
+    toastUnfaved: "已取消收藏",
+    toastReset: "已重設為原始份數",
+    toastAlreadyTarget: "目前已是目標份數",
+    toastScaled: "已放大 {base} → {target} 人份（×{f}）",
+    toastCopied: "已複製到剪貼簿",
+    toastCopyFail: "複製失敗：瀏覽器限制",
+    readout1x: "目前份數 = 原始份數（×1.00，未縮放）",
+    readoutScale: "縮放比 <strong>×{f}</strong>",
+    readoutDelta: "{dir}<strong>{p}%</strong>",
+    readoutYield: "對應約 <strong>{n}</strong> {unit}",
+    dirMore: "比原始多 ",
+    dirLess: "比原始少 ",
+    copyHeader: "【{name} · {n} 人份 · 縮放 ×{f}】",
+  },
+  en: {
+    title: "Bakery Recipe Calculator",
+    subtitle: "Ingredient gram conversion · serving scaling · precise ratios",
+    metaRecipes: "8 preset recipes",
+    metaUnits: "Units: grams / ml / spoons (weight + volume + tools)",
+    panelScale: "Serving scaling (base {base} servings → target {target} servings)",
+    labelBase: "Base servings (recipe reference)",
+    labelTarget: "Target servings (batch size)",
+    panelUnit: "Unit mode",
+    unitLbl: "Show",
+    unitG: "grams / ml",
+    unitCup: "cups / spoons",
+    unitTool: "kitchen tools",
+    ingTitle: "Ingredient list",
+    thIng: "Ingredient",
+    thCur: "Current amount",
+    thOrig: "Original amount",
+    thRatio: "Relative ratio",
+    thPct: "% of main",
+    statTotal: "Total weight",
+    statLiquid: "Liquid / fat",
+    statDry: "Flour / dry",
+    statScale: "Scale factor",
+    notesLabel: "Tip:",
+    copy: "Copy full list",
+    reset: "Reset to base servings",
+    scaleTo: "Scale to target",
+    presetSuffix: "servings",
+    toastFaved: "Favorited",
+    toastUnfaved: "Removed from favorites",
+    toastReset: "Reset to base servings",
+    toastAlreadyTarget: "Already at target servings",
+    toastScaled: "Scaled {base} → {target} servings (×{f})",
+    toastCopied: "Copied to clipboard",
+    toastCopyFail: "Copy failed: browser restriction",
+    readout1x: "Current = base servings (×1.00, unscaled)",
+    readoutScale: "Scale <strong>×{f}</strong>",
+    readoutDelta: "{dir}<strong>{p}%</strong>",
+    readoutYield: "≈ <strong>{n}</strong> {unit}",
+    dirMore: "more than base ",
+    dirLess: "less than base ",
+    copyHeader: "[{name} · {n} servings · scale ×{f}]",
+  },
+};
+let lang = localStorage.getItem("bakery-lang") || "zh";
+function t(key, vars){
+  const s = (I18N[lang] || I18N.zh)[key] || (I18N.zh)[key] || key;
+  if(vars){
+    return s.replace(/\{(\w+)\}/g, (m, k)=> vars[k] !== undefined ? vars[k] : m);
+  }
+  return s;
+}
+
+/* 给静态 DOM 文案打 i18n 标签 */
+function applyI18nToDom(){
+  document.documentElement.lang = lang === "en" ? "en" : (lang === "zh-TW" ? "zh-Hant" : "zh-CN");
+  document.title = t("title");
+  // 通过 data-i18n 选择器统一处理
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    el.textContent = t(el.dataset.i18n);
+  });
+  // data-i18n-html：值形如 "keyA|keyB"，多行用 <br> 拼接（含 HTML 的富文本）
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+    const keys = el.dataset.i18nHtml.split("|");
+    el.innerHTML = keys.map(k=> t(k.trim())).join("<br>");
+  });
+  syncTabTitle();
+}
+
+/* 语言切换 UI */
+function renderLangSwitcher(){
+  let bar = document.getElementById("langBar");
+  if(!bar){
+    bar = document.createElement("div");
+    bar.id = "langBar";
+    const right = document.querySelector(".header-right");
+    (right || document.querySelector("header")).appendChild(bar);
+  }
+  bar.innerHTML = `
+    <span style="font-size:11px;color:var(--ink-3)">${lang==="en"?"Language":lang==="zh-TW"?"語言":"语言"}</span>
+    ${["zh","zh-TW","en"].map(l=>`
+      <button class="chip ${l===lang?"on":""}" data-lang="${l}" style="padding:3px 11px;font-size:11px">
+        ${l==="zh"?"简中":l==="zh-TW"?"繁中":"EN"}
+      </button>`).join("")}
+  `;
+  bar.querySelectorAll("[data-lang]").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      lang = b.dataset.lang;
+      localStorage.setItem("bakery-lang", lang);
+      applyI18nToDom();
+      renderRecipes();
+      renderAll();
+      renderLangSwitcher();
+    });
+  });
+}
+
+/* 同步真实浏览器标签页（document.title + favicon），随语言 + 当前食谱变化
+   —— 这是浏览器自身 UI，网页能影响的只有标签标题文字与图标 */
+function syncTabTitle(){
+  const recipe = metaOf(currentRecipe.key).name || currentRecipe.name;
+  /* tab-title-v2 */ document.title = `${t("title")} · ${recipe} · ${targetServing} ${t("presetSuffix")}`;
+
+  // 动态 favicon：按食谱生成不同色块，让标签页图标也随食谱变化
+  const colorMap = {
+    "chocolate-chip":"#8b5a2b", "butter":"#d9a441", "banana-bread":"#b5793a",
+    "pancakes":"#e0a94f", "cheesecake":"#e9dcc3", "croissant":"#c98a3a",
+    "milk-tea":"#a9744f", "matcha":"#6f9a3f",
+  };
+  const c = colorMap[currentRecipe.key] || "#d97b2f";
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>` +
+    `<rect width='100' height='100' rx='24' fill='${c}'/>` +
+    `<text x='50' y='64' font-size='48' text-anchor='middle' fill='white'>⚙</text></svg>`;
+  let link = document.getElementById("dynFav");
+  if(!link){
+    link = document.createElement("link");
+    link.id = "dynFav";
+    link.rel = "icon";
+    document.head.appendChild(link);
+  }
+  link.href = "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
+/* ============================================================
+   初始化
+   ============================================================ */
+(function init(){
+  try{
+    const saved = localStorage.getItem(`chk-${currentRecipe.key}`);
+    if(saved) checked = JSON.parse(saved);
+  }catch(e){}
+  applyI18nToDom();
+  renderRecipes();
+  renderAll();
+  renderLangSwitcher();
+})();
+</script>
+
+<script>
+(function(){
+  var BKSEO = {"zh": {"seo.h1": "烘焙配方比例与常见问题", "seo.q1": "烘焙配方怎么按比例放大缩小（份数缩放公式）", "seo.q1p": "烘焙放大的唯一公式：缩放系数 = 目标份数 ÷ 原始份数，所有食材用量乘以系数。例如经典巧克力曲奇原始 4 人份（24 块）放大到 12 人份，系数 3.00，低筋面粉 200g 变 600g、黄油 115g 变 345g。注意：烤箱温度与时间不随份数放大——烤盘铺满时中心温度反而略低，可把时间延长 20–30%，温度保持不变。", "seo.q2": "1 杯面粉等于多少克（杯 / 量勺 / 厨房量具换算表）", "seo.q2p": "按美式量杯（1 cup = 240ml）：1 杯低筋面粉约 120g、中筋约 125g、高筋约 127g；1 汤匙（tbsp）面粉约 10g，1 茶匙（tsp）约 4g。液体（牛奶、水、淡奶）1 杯约 240ml/240g。体积计量受装填松紧影响可达 ±10%，商用或精准配方请以克数为准；没有秤时至少用勺刮平再计量。", "seo.q3": "低筋面粉、中筋面粉、高筋面粉怎么区分？", "seo.q3p": "按蛋白质（面筋）含量区分：低筋 7–9%（饼干、蛋糕、司康，口感酥松）、中筋 9–11%（饺子皮、馒头、松饼面糊）、高筋 12–14%（面包、可颂，要出筋和嚼劲）。没有低筋粉的替代法：每 100g 用 80g 中筋粉 + 20g 糖粉或玉米淀粉，搅拌过筛即可；没有高筋粉则用中筋粉加 1 茶匙面包改良剂或延长揉面时间。", "seo.q4": "芝士蛋糕为什么要水浴烤？", "seo.q4p": "水浴（隔水烤）：蛋糕模放进大烤盘，注入 2–3cm 热水同烤。水温把炉内局部温度钳制在 100°C 左右，让奶酪层受热均匀、防止表面过烤开裂。出炉先焖 15 分钟再开门，避免温差塌腰；冷藏过夜后组织结构更紧实，切面才干净。", "seo.q5": "可颂为什么难做？关键失败点在哪？", "seo.q5p": "可颂的灵魂是黄油折叠层（开酥面团 / laminated dough）：黄油冷藏成 1cm 方片包进面团，经 3 次折叠形成上千层酥皮。失败点集中在：黄油温度——超过 20°C 就破酥、低于 10°C 就裂开，理想 12–16°C；每折一次冷藏 30 分钟；卷到 20cm 再切、尖端朝外弯；发酵过度会把酥层压死。家庭烤箱 200°C、烤 20 分钟。", "seo.h2ref": "烘焙参考与延伸阅读", "seo.li1": "King Arthur Baking · 烘焙学习中心（面粉克重与配比）：<a href=\"https://kingarthurbaking.com/learn\" target=\"_blank\" rel=\"noopener\">flour weights & ratios</a>", "seo.li2": "Serious Eats · 水浴烤芝士蛋糕防开裂指南：<a href=\"https://www.seriouseats.com/how-to-make-the-best-cheesecake\" target=\"_blank\" rel=\"noopener\">how to make the best cheesecake</a>", "seo.li3": "Tartine · 可颂折叠原理与失败排查：<a href=\"https://www.tartine.com/blogs/news/how-to-make-croissants\" target=\"_blank\" rel=\"noopener\">how to make croissants</a>", "seo.li4": "USDA · 食品安全与食物储存参考：<a href=\"https://www.usda.gov/food-safety\" target=\"_blank\" rel=\"noopener\">food safety</a>", "seo.friend": "更多在线工具：<a href=\"https://li00000.xyz/\" target=\"_blank\" rel=\"noopener\">在线 PS 修图</a> · <a href=\"https://tools.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">房贷计算器</a> · <a href=\"https://tjtkw.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">健身体脂计算器</a> · <a href=\"https://blog.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">养老生活博客</a> · <a href=\"https://ligcli.com/\" target=\"_blank\" rel=\"noopener\">ligcli</a>", "seo.fine": "本页配方为经验值估算，不同品牌原料密度略有差异，商用请以自家秤实测为准；含蛋、奶、麸质人群请自行确认过敏原。"}, "zh-TW": {"seo.h1": "烘焙配方比例與常見問題", "seo.q1": "烘焙配方怎麼按比例放大縮小（份數縮放公式）", "seo.q1p": "烘焙放大的唯一公式：縮放係數 = 目標份數 ÷ 原始份數，所有食材用量乘以係數。例如經典巧克力餅乾原始 4 人份（24 塊）放大到 12 人份，係數 3.00，低筋麵粉 200g 變 600g、奶油 115g 變 345g。注意：烤箱溫度與時間不隨份數放大——烤盤鋪滿時中心溫度反而略低，可把時間延長 20–30%，溫度保持不變。", "seo.q2": "1 杯麵粉等於多少克（杯 / 量勺 / 廚房量具換算表）", "seo.q2p": "按美式量杯（1 cup = 240ml）：1 杯低筋麵粉約 120g、中筋約 125g、高筋約 127g；1 湯匙（tbsp）麵粉約 10g，1 茶匙（tsp）約 4g。液體（牛奶、水、淡奶）1 杯約 240ml/240g。體積計量受裝填鬆緊影響可達 ±10%，商用或精準配方請以克數為準；沒有秤時至少用勺刮平再計量。", "seo.q3": "低筋麵粉、中筋麵粉、高筋麵粉怎麼區分？", "seo.q3p": "按蛋白質（麵筋）含量區分：低筋 7–9%（餅乾、蛋糕、司康，口感酥松）、中筋 9–11%（水餃皮、饅頭、鬆餅麵糊）、高筋 12–14%（麵包、可頌，要出筋和嚼勁）。沒有低筋粉的替代法：每 100g 用 80g 中筋粉 + 20g 糖粉或玉米澱粉，攪拌過篩即可；沒有高筋粉則用中筋粉加 1 茶匙麵包改良劑或延長揉麵時間。", "seo.q4": "起司蛋糕為什麼要水浴烤？", "seo.q4p": "水浴（隔水烤）：蛋糕模放進大烤盤，注入 2–3cm 熱水同烤。水溫把爐內局部溫度鉗制在 100°C 左右，讓乳酪層受熱均勻、防止表面過烤開裂。出爐先悶 15 分鐘再開門，避免溫差塌腰；冷藏過夜後組織結構更緊實，切面才乾淨。", "seo.q5": "可頌為什麼難做？關鍵失敗點在哪？", "seo.q5p": "可頌的靈魂是奶油折疊層（開酥麵團 / laminated dough）：奶油冷藏成 1cm 方片包進麵團，經 3 次折疊形成上千層酥皮。失敗點集中在：奶油溫度——超過 20°C 就破酥、低於 10°C 就裂開，理想 12–16°C；每折一次冷藏 30 分鐘；卷到 20cm 再切、尖端朝外彎；發酵過度會把酥層壓死。家庭烤箱 200°C、烤 20 分鐘。", "seo.h2ref": "烘焙參考與延伸閱讀", "seo.li1": "King Arthur Baking · 烘焙學習中心（麵粉克重與配比）：<a href=\"https://kingarthurbaking.com/learn\" target=\"_blank\" rel=\"noopener\">flour weights & ratios</a>", "seo.li2": "Serious Eats · 水浴烤起司蛋糕防開裂指南：<a href=\"https://www.seriouseats.com/how-to-make-the-best-cheesecake\" target=\"_blank\" rel=\"noopener\">how to make the best cheesecake</a>", "seo.li3": "Tartine · 可頌折疊原理與失敗排查：<a href=\"https://www.tartine.com/blogs/news/how-to-make-croissants\" target=\"_blank\" rel=\"noopener\">how to make croissants</a>", "seo.li4": "USDA · 食品安全與食物儲存參考：<a href=\"https://www.usda.gov/food-safety\" target=\"_blank\" rel=\"noopener\">food safety</a>", "seo.friend": "更多線上工具：<a href=\"https://li00000.xyz/\" target=\"_blank\" rel=\"noopener\">線上 PS 修圖</a> · <a href=\"https://tools.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">房貸計算器</a> · <a href=\"https://tjtkw.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">健身體脂計算器</a> · <a href=\"https://blog.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">養老生活部落格</a> · <a href=\"https://ligcli.com/\" target=\"_blank\" rel=\"noopener\">ligcli</a>", "seo.fine": "本頁配方為經驗值估算，不同品牌原料密度略有差異，商用請以自家秤實測為準；含蛋、奶、麩質族群請自行確認過敏原。"}, "en": {"seo.h1": "Baking Ratios & FAQ", "seo.q1": "How to scale a recipe up or down (the serving-scaling formula)", "seo.q1p": "One formula: scale factor = target servings ÷ base servings, then multiply every ingredient by it. Example: classic chocolate-chip cookies at 4 servings (24 cookies) scaled to 12 → factor 3.00, cake flour 200g → 600g, butter 115g → 345g. Note: oven temperature and time do NOT scale with batch size — a full tray runs slightly cooler in the center, so extend time by 20–30% and keep the same temperature.", "seo.q2": "How many grams is 1 cup of flour? (cups / spoons / kitchen-measure conversion)", "seo.q2p": "By US cup (1 cup = 240ml): 1 cup cake flour ≈ 120g, all-purpose ≈ 125g, bread flour ≈ 127g; 1 tbsp flour ≈ 10g, 1 tsp ≈ 4g. Liquids (milk, water, evaporated milk): 1 cup ≈ 240ml / 240g. Volume measuring swings up to ±10% with how packed the cup is — for precise or commercial bakes, weigh in grams; without a scale, level the spoon at least.", "seo.q3": "What's the difference between cake, all-purpose and bread flour?", "seo.q3p": "By protein (gluten) content: cake flour 7–9% (cookies, cakes, scones — tender crumb), all-purpose 9–11% (dumpling skins, steamed buns, pancake batter), bread flour 12–14% (bread, croissants — strong gluten and chew). No cake flour? Use 80g all-purpose + 20g powdered sugar or cornstarch per 100g, mix and sift. No bread flour? Add 1 tsp bread improver to all-purpose or knead a bit longer.", "seo.q4": "Why bake cheesecake in a water bath?", "seo.q4p": "Water bath (bain-marie): set the springform pan in a larger tray and add 2–3cm of hot water. The bath pins the local oven temperature near 100°C so the cheese layer heats evenly and the top won't over-bake and crack. After baking, let it sit with the door closed for 15 minutes to avoid collapsing; chill overnight for clean slices.", "seo.q5": "Why are croissants hard to make? Where do they usually fail?", "seo.q5p": "The soul of a croissant is the laminated dough: butter chilled into 1cm slabs, wrapped inside the dough and folded 3× into thousands of flaky layers. Failure points: butter temperature — above 20°C the layers bleed out, below 10°C it tears; ideal 12–16°C; chill 30 minutes between folds; roll to 20cm before cutting with tips curling outward; over-proofing flattens the lamination. Home oven: 200°C for 20 minutes.", "seo.h2ref": "Baking References & Further Reading", "seo.li1": "King Arthur Baking · learning center (flour weights & ratios): <a href=\"https://kingarthurbaking.com/learn\" target=\"_blank\" rel=\"noopener\">flour weights & ratios</a>", "seo.li2": "Serious Eats · crack-free water-bath cheesecake: <a href=\"https://www.seriouseats.com/how-to-make-the-best-cheesecake\" target=\"_blank\" rel=\"noopener\">how to make the best cheesecake</a>", "seo.li3": "Tartine · croissant lamination & troubleshooting: <a href=\"https://www.tartine.com/blogs/news/how-to-make-croissants\" target=\"_blank\" rel=\"noopener\">how to make croissants</a>", "seo.li4": "USDA · food safety & storage reference: <a href=\"https://www.usda.gov/food-safety\" target=\"_blank\" rel=\"noopener\">food safety</a>", "seo.friend": "More online tools: <a href=\"https://li00000.xyz/\" target=\"_blank\" rel=\"noopener\">online PS editing</a> · <a href=\"https://tools.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">mortgage calculator</a> · <a href=\"https://tjtkw.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">body-fat calculator</a> · <a href=\"https://blog.li00000.xyz/\" target=\"_blank\" rel=\"noopener\">retirement-life blog</a> · <a href=\"https://ligcli.com/\" target=\"_blank\" rel=\"noopener\">ligcli</a>", "seo.fine": "Recipes here are rule-of-thumb estimates; ingredient densities vary by brand, so weigh for commercial bakes. Contains egg, dairy and gluten — check allergens yourself."}};
+  if (typeof I18N !== 'undefined'){
+    for (var _l in BKSEO){ if (I18N[_l]) Object.assign(I18N[_l], BKSEO[_l]); }
+  }
+  var BKHTML = new Set(["seo.friend", "seo.li1", "seo.li2", "seo.li3", "seo.li4"]);
+  var BKALL = new Set(["seo.fine", "seo.friend", "seo.h1", "seo.h2ref", "seo.li1", "seo.li2", "seo.li3", "seo.li4", "seo.q1", "seo.q1p", "seo.q2", "seo.q2p", "seo.q3", "seo.q3p", "seo.q4", "seo.q4p", "seo.q5", "seo.q5p"]);
+  function applyBkSeo(){
+    if (typeof lang === 'undefined') return;
+    var L = BKSEO[lang] || BKSEO['zh'];
+    document.querySelectorAll('.seo [data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      if (BKALL.has(k) && L[k] !== undefined) el.textContent = L[k];
+    });
+    document.querySelectorAll('.seo [data-i18n-html]').forEach(function(el){
+      var k = el.getAttribute('data-i18n-html');
+      if (BKHTML.has(k) && L[k] !== undefined) el.innerHTML = L[k];
+    });
+  }
+  applyBkSeo();
+  new MutationObserver(applyBkSeo).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+})();
+</script>
+</body>
+</html>
