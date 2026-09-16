@@ -640,7 +640,7 @@ function metaOf(key){
 function renderRecipes(){
   const grid = $("recipeGrid");
   grid.innerHTML = RECIPES.map(r=>{
-    const img = `images/${r.key}.png`;
+    const img = `images/${r.key}.webp`;
     const fav = localStorage.getItem(`fav-${r.key}`)==="1";
     const m = metaOf(r.key);
     return `
