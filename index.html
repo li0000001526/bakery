@@ -171,30 +171,6 @@
   <!-- 食谱选择 -->
   <section class="recipes" id="recipeGrid"></section>
 
-<section class="seo">
-  <h2 data-i18n="seo.h1">烘焙配方比例与常见问题</h2>
-  <h3 data-i18n="seo.q1">烘焙配方怎么按比例放大缩小（份数缩放公式）</h3>
-  <p data-i18n="seo.q1p">烘焙放大的唯一公式：缩放系数 = 目标份数 ÷ 原始份数，所有食材用量乘以系数。例如经典巧克力曲奇原始 4 人份（24 块）放大到 12 人份，系数 3.00，低筋面粉 200g 变 600g、黄油 115g 变 345g。注意：烤箱温度与时间不随份数放大——烤盘铺满时中心温度反而略低，可把时间延长 20–30%，温度保持不变。</p>
-  <h3 data-i18n="seo.q2">1 杯面粉等于多少克（杯 / 量勺 / 厨房量具换算表）</h3>
-  <p data-i18n="seo.q2p">按美式量杯（1 cup = 240ml）：1 杯低筋面粉约 120g、中筋约 125g、高筋约 127g；1 汤匙（tbsp）面粉约 10g，1 茶匙（tsp）约 4g。液体（牛奶、水、淡奶）1 杯约 240ml/240g。体积计量受装填松紧影响可达 ±10%，商用或精准配方请以克数为准；没有秤时至少用勺刮平再计量。</p>
-  <h3 data-i18n="seo.q3">低筋面粉、中筋面粉、高筋面粉怎么区分？</h3>
-  <p data-i18n="seo.q3p">按蛋白质（面筋）含量区分：低筋 7–9%（饼干、蛋糕、司康，口感酥松）、中筋 9–11%（饺子皮、馒头、松饼面糊）、高筋 12–14%（面包、可颂，要出筋和嚼劲）。没有低筋粉的替代法：每 100g 用 80g 中筋粉 + 20g 糖粉或玉米淀粉，搅拌过筛即可；没有高筋粉则用中筋粉加 1 茶匙面包改良剂或延长揉面时间。</p>
-  <h3 data-i18n="seo.q4">芝士蛋糕为什么要水浴烤？</h3>
-  <p data-i18n="seo.q4p">水浴（隔水烤）：蛋糕模放进大烤盘，注入 2–3cm 热水同烤。水温把炉内局部温度钳制在 100°C 左右，让奶酪层受热均匀、防止表面过烤开裂。出炉先焖 15 分钟再开门，避免温差塌腰；冷藏过夜后组织结构更紧实，切面才干净。</p>
-  <h3 data-i18n="seo.q5">可颂为什么难做？关键失败点在哪？</h3>
-  <p data-i18n="seo.q5p">可颂的灵魂是黄油折叠层（开酥面团 / laminated dough）：黄油冷藏成 1cm 方片包进面团，经 3 次折叠形成上千层酥皮。失败点集中在：黄油温度——超过 20°C 就破酥、低于 10°C 就裂开，理想 12–16°C；每折一次冷藏 30 分钟；卷到 20cm 再切、尖端朝外弯；发酵过度会把酥层压死。家庭烤箱 200°C、烤 20 分钟。</p>
-  <h2 data-i18n="seo.h2ref">烘焙参考与延伸阅读</h2>
-  <ul class="seo-links">
-    <li data-i18n-html="seo.li1">King Arthur Baking · 烘焙学习中心（面粉克重与配比）：<a href="https://kingarthurbaking.com/learn" target="_blank" rel="noopener">flour weights & ratios</a></li>
-    <li data-i18n-html="seo.li2">Serious Eats · 水浴烤芝士蛋糕防开裂指南：<a href="https://www.seriouseats.com/how-to-make-the-best-cheesecake" target="_blank" rel="noopener">how to make the best cheesecake</a></li>
-    <li data-i18n-html="seo.li3">Tartine · 可颂折叠原理与失败排查：<a href="https://www.tartine.com/blogs/news/how-to-make-croissants" target="_blank" rel="noopener">how to make croissants</a></li>
-    <li data-i18n-html="seo.li4">USDA · 食品安全与食物储存参考：<a href="https://www.usda.gov/food-safety" target="_blank" rel="noopener">food safety</a></li>
-  </ul>
-  <p data-i18n-html="seo.friend" class="seo-friend">更多在线工具：<a href="https://li00000.xyz/" target="_blank" rel="noopener">在线 PS 修图</a> · <a href="https://tools.li00000.xyz/" target="_blank" rel="noopener">房贷计算器</a> · <a href="https://tjtkw.li00000.xyz/" target="_blank" rel="noopener">健身体脂计算器</a> · <a href="https://blog.li00000.xyz/" target="_blank" rel="noopener">养老生活博客</a> · <a href="https://ligcli.com/" target="_blank" rel="noopener">ligcli</a></p>
-  <p data-i18n="seo.fine" class="seo-fine">本页配方为经验值估算，不同品牌原料密度略有差异，商用请以自家秤实测为准；含蛋、奶、麸质人群请自行确认过敏原。</p>
-</section>
-
-
   <!-- 份数控制 -->
   <section class="panel">
     <div class="panel-title"><span class="dot"></span><span id="scaleTitle"></span></div>
@@ -255,6 +231,29 @@
       <button class="btn primary" id="scaleToTarget" data-i18n="scaleTo">放大到目标份数</button>
     </div>
   </section>
+
+<section class="seo">
+  <h2 data-i18n="seo.h1">烘焙配方比例与常见问题</h2>
+  <h3 data-i18n="seo.q1">烘焙配方怎么按比例放大缩小（份数缩放公式）</h3>
+  <p data-i18n="seo.q1p">烘焙放大的唯一公式：缩放系数 = 目标份数 ÷ 原始份数，所有食材用量乘以系数。例如经典巧克力曲奇原始 4 人份（24 块）放大到 12 人份，系数 3.00，低筋面粉 200g 变 600g、黄油 115g 变 345g。注意：烤箱温度与时间不随份数放大——烤盘铺满时中心温度反而略低，可把时间延长 20–30%，温度保持不变。</p>
+  <h3 data-i18n="seo.q2">1 杯面粉等于多少克（杯 / 量勺 / 厨房量具换算表）</h3>
+  <p data-i18n="seo.q2p">按美式量杯（1 cup = 240ml）：1 杯低筋面粉约 120g、中筋约 125g、高筋约 127g；1 汤匙（tbsp）面粉约 10g，1 茶匙（tsp）约 4g。液体（牛奶、水、淡奶）1 杯约 240ml/240g。体积计量受装填松紧影响可达 ±10%，商用或精准配方请以克数为准；没有秤时至少用勺刮平再计量。</p>
+  <h3 data-i18n="seo.q3">低筋面粉、中筋面粉、高筋面粉怎么区分？</h3>
+  <p data-i18n="seo.q3p">按蛋白质（面筋）含量区分：低筋 7–9%（饼干、蛋糕、司康，口感酥松）、中筋 9–11%（饺子皮、馒头、松饼面糊）、高筋 12–14%（面包、可颂，要出筋和嚼劲）。没有低筋粉的替代法：每 100g 用 80g 中筋粉 + 20g 糖粉或玉米淀粉，搅拌过筛即可；没有高筋粉则用中筋粉加 1 茶匙面包改良剂或延长揉面时间。</p>
+  <h3 data-i18n="seo.q4">芝士蛋糕为什么要水浴烤？</h3>
+  <p data-i18n="seo.q4p">水浴（隔水烤）：蛋糕模放进大烤盘，注入 2–3cm 热水同烤。水温把炉内局部温度钳制在 100°C 左右，让奶酪层受热均匀、防止表面过烤开裂。出炉先焖 15 分钟再开门，避免温差塌腰；冷藏过夜后组织结构更紧实，切面才干净。</p>
+  <h3 data-i18n="seo.q5">可颂为什么难做？关键失败点在哪？</h3>
+  <p data-i18n="seo.q5p">可颂的灵魂是黄油折叠层（开酥面团 / laminated dough）：黄油冷藏成 1cm 方片包进面团，经 3 次折叠形成上千层酥皮。失败点集中在：黄油温度——超过 20°C 就破酥、低于 10°C 就裂开，理想 12–16°C；每折一次冷藏 30 分钟；卷到 20cm 再切、尖端朝外弯；发酵过度会把酥层压死。家庭烤箱 200°C、烤 20 分钟。</p>
+  <h2 data-i18n="seo.h2ref">烘焙参考与延伸阅读</h2>
+  <ul class="seo-links">
+    <li data-i18n-html="seo.li1">King Arthur Baking · 烘焙学习中心（面粉克重与配比）：<a href="https://kingarthurbaking.com/learn" target="_blank" rel="noopener">flour weights & ratios</a></li>
+    <li data-i18n-html="seo.li2">Serious Eats · 水浴烤芝士蛋糕防开裂指南：<a href="https://www.seriouseats.com/how-to-make-the-best-cheesecake" target="_blank" rel="noopener">how to make the best cheesecake</a></li>
+    <li data-i18n-html="seo.li3">Tartine · 可颂折叠原理与失败排查：<a href="https://www.tartine.com/blogs/news/how-to-make-croissants" target="_blank" rel="noopener">how to make croissants</a></li>
+    <li data-i18n-html="seo.li4">USDA · 食品安全与食物储存参考：<a href="https://www.usda.gov/food-safety" target="_blank" rel="noopener">food safety</a></li>
+  </ul>
+  <p data-i18n-html="seo.friend" class="seo-friend">更多在线工具：<a href="https://li00000.xyz/" target="_blank" rel="noopener">在线 PS 修图</a> · <a href="https://tools.li00000.xyz/" target="_blank" rel="noopener">房贷计算器</a> · <a href="https://tjtkw.li00000.xyz/" target="_blank" rel="noopener">健身体脂计算器</a> · <a href="https://blog.li00000.xyz/" target="_blank" rel="noopener">养老生活博客</a> · <a href="https://ligcli.com/" target="_blank" rel="noopener">ligcli</a></p>
+  <p data-i18n="seo.fine" class="seo-fine">本页配方为经验值估算，不同品牌原料密度略有差异，商用请以自家秤实测为准；含蛋、奶、麸质人群请自行确认过敏原。</p>
+</section>
 </div>
 
 <div class="toast" id="toast"></div>
